@@ -10,6 +10,17 @@ const [form_data, set_form_data] = useState();
 const handleSubmit = async (e) => {
     e.preventDefault();
     await API.post('/a', form_data)
+    .then(response => {
+      console.log(response)
+      if (response.status === 200){
+        alert('subido');
+      }else{
+        alert('error de subida');
+      }
+    })
+    .catch(error => {
+      alert('error de subida');
+    });
 }
 
 const send_image = (files) => {
