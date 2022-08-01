@@ -21,26 +21,32 @@ const send_image = (files) => {
 
   return (
     <div>
-              <form onSubmit={handleSubmit}>
-
-        <br />
-        <div className="image-upload-wrap">
-
-          <input
-            className="file-upload-input"
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={(e) => {
-              send_image(e.target.files[0])
-          }}
-          />
-          <div className="text-information">
-            <h3 className="arrastre">Arrastre o seleccione la imagen que desea compartir</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="image-upload-wrap">
+            <input
+              className="file-upload-input"
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={(e) => {
+                send_image(e.target.files[0])
+            }}
+            />
+            <div className="text-information">
+              <h3 className="arrastre">Arrastre o seleccione la imagen que desea compartir</h3>
+            </div>
           </div>
-        </div>
-        <button>Save Image</button>
-
+          <div className="center">
+          <img
+            src=""
+            alt=""
+            height="150px"
+            width="250px"
+          />
+          </div>
+          <div className="center">
+          <button>Subir Imagen</button>
+          </div>
         </form>
     </div>
     
