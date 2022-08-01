@@ -1,5 +1,7 @@
 import { useState } from "react";
 import '../estilos/ArrastrarFoto.css';
+import API from './APIS/api';
+import Spinner from "react-spinkit";
 
 function ArrastrarFoto() {
   const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
@@ -15,6 +17,26 @@ function ArrastrarFoto() {
       };
     }
   };
+
+  const manejarEnvio = e => {
+    e.preventDefault();
+    console.log('subiendo...');
+    API.post()
+    .then(response => {
+      if (response.status === 200){
+        alert('subido');
+      }else{
+        alert('errooor de subida');
+      }
+
+    })
+    .catch(error => {
+      alert('error de subida');
+    });
+
+};
+
+
   return (
     <div>
         <br />
@@ -40,6 +62,12 @@ function ArrastrarFoto() {
             height="150px"
             width="250px"
           />
+        </div>
+        <div className="center">
+          <form className="tarea-formulario"
+          onSubmit={manejarEnvio}>
+                <button className="tarea-boton">Subir Imagen</button>
+          </form>
         </div>
     </div>
   );
