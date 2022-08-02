@@ -9,7 +9,7 @@ function App() {
   <div className='fotos-logo-contenedor'>
   </div>
     <div className='fotos-lista-principal'>
-    <h1>Compartir Fotos mediante enlaces</h1>
+    <h1>Compartir fotos mediante enlaces</h1>
     <ArrastrarFoto />
   </div>
   </div>
