@@ -10,7 +10,11 @@ const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
 
 const handleSubmit = async (e) => {
     e.preventDefault();
-    await API.post('/a', form_data)
+    await API.post('/a', form_data,{
+              headers: {
+                'Content-Type': 'application/json',
+        },
+    })
     .then(response => {
       console.log(response)
       if (response.status === 200){
