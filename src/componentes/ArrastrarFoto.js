@@ -6,6 +6,7 @@ import Spinner from "react-spinkit";
 function ArrastrarFoto() {
 
 const [form_data, set_form_data] = useState();
+const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +31,17 @@ const send_image = (files) => {
     console.log(formData)
 }
 
+const previsualizarImagen = (e) => {
+  if (e.target.files[0] !== undefined) {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = (e) => {
+      e.preventDefault();
+      setImageSelectedPrevious(e.target.result); 
+    };
+  }
+};
+
   return (
     <div>
         <form onSubmit={handleSubmit}>
@@ -41,6 +53,7 @@ const send_image = (files) => {
               multiple
               onChange={(e) => {
                 send_image(e.target.files[0])
+                previsualizarImagen(e);
             }}
             />
             <div className="text-information">
@@ -49,7 +62,7 @@ const send_image = (files) => {
           </div>
           <div className="center">
           <img
-            src=""
+            src={ImageSelectedPrevious}
             alt=""
             height="150px"
             width="250px"
