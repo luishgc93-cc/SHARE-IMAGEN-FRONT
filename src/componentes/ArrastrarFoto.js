@@ -12,7 +12,7 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     await API.post('/a', form_data,{
               headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
         },
     })
     .then(response => {
