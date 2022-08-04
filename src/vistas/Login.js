@@ -32,7 +32,7 @@ function Login() {
 
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
-    const rol = e.target.elements.rol.value;
+    const rol = "user";
 
     console.log("submit", email, password, rol);
 
@@ -58,14 +58,6 @@ function Login() {
         <label>
           Contraseña:
           <input type="password" id="password" />
-        </label>
-
-        <label>
-          Rol:
-          <select id="rol">
-            <option value="admin">Administrador</option>
-            <option value="user">Usuario</option>
-          </select>
         </label>
 
         <input

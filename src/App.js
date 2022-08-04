@@ -36,7 +36,7 @@ function App() {
         rol: rol,
       };
       setUser(userData);
-      console.log("userData fianl", userData);
+      console.log("userData", userData);
     });
   }
 
@@ -55,7 +55,7 @@ function App() {
 if(user){
   return (
     <div className='aplicacion-fotos'>
-       <UserView />
+       <UserView user={user} />
     <div className='fotos-logo-contenedor'>
     </div>
       <div className='fotos-lista-principal'>
