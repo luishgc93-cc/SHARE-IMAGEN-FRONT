@@ -48,7 +48,7 @@ function Login() {
 
   return (
     <div>
-      <h1>{isRegistrando ? "Regístrate" : "Inicia sesión"}</h1>
+      <h2>{isRegistrando ? "Regístrate" : "Inicia sesión"}</h2>
      
       <p className="textoLoginRegistro">{isRegistrando ? "Registrate para poder ver todos las imágenes compartidas, poder borrarlas, editarlas, etc." : "Inicia sesión para ver tus imágenes compartidas."}</p>
 
