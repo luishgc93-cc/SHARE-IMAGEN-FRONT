@@ -1,5 +1,5 @@
 import API from './APIS/api';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../estilos/ArrastrarFoto.css';
 import Spinner from "react-spinkit";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -10,6 +10,15 @@ function ArrastrarFoto() {
 const [form_data, set_form_data] = useState();
 const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
 const [UrlImagen, setUrlImagen] = useState(null);
+
+console.log(UrlImagen)
+  useEffect(() => {
+    const URLactual = window.location;
+    let url = new URL(URLactual);
+    let urlObteniendoId = url.searchParams.get("id");
+    setUrlImagen(urlObteniendoId)
+    console.log(urlObteniendoId);
+  }, [])
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +33,7 @@ const handleSubmit = async (e) => {
         alert('subido');
         const UrlImagenOriginal = response.data.secure_url;
         const UrlRecortada = UrlImagenOriginal.replace('https://res.cloudinary.com/dmo3iliks/image/upload/','')
-        setUrlImagen(UrlRecortada)
+        setUrlImagen(UrlRecortada);
 
       }else{
         alert('error de subida, estatus no es 200');
@@ -54,7 +63,7 @@ const previsualizarImagen = (e) => {
   }
 };
 
-if(ImageSelectedPrevious == null ){
+if(ImageSelectedPrevious == null & UrlImagen == null){
   return (
     <div>
     <form onSubmit={handleSubmit}>
@@ -79,7 +88,7 @@ if(ImageSelectedPrevious == null ){
   </div>
   );
 }else if(UrlImagen){
-  const UrlServicio = ('http://localhost:3000/' + UrlImagen);
+  const UrlServicio = ('http://localhost:3000?id=' + UrlImagen);
   return(
     <div>
       <img
@@ -95,7 +104,8 @@ if(ImageSelectedPrevious == null ){
       </CopyToClipboard>
     </div>
   );
-  }else{
+  }
+else{
   return (
   <div>
     <div className="center">
