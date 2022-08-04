@@ -11,13 +11,11 @@ const [form_data, set_form_data] = useState();
 const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
 const [UrlImagen, setUrlImagen] = useState(null);
 
-console.log(UrlImagen)
   useEffect(() => {
     const URLactual = window.location;
     let url = new URL(URLactual);
     let urlObteniendoId = url.searchParams.get("id");
     setUrlImagen(urlObteniendoId)
-    console.log(urlObteniendoId);
   }, [])
 
 const handleSubmit = async (e) => {
