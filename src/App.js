@@ -55,7 +55,6 @@ function App() {
 if(user){
   return (
     <div className='aplicacion-fotos'>
-      
       <div className='fotos-menu'>
       <div className='fotos-menu-principal'>
       <UserView user={user} />
@@ -76,7 +75,6 @@ if(user){
         <Login />
         </div>
       </div>
-
 
       <div className='fotos-lista-principal'>
       <h1>Compartir fotos mediante enlaces</h1>
