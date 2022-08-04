@@ -10,6 +10,7 @@ function ArrastrarFoto() {
 const [form_data, set_form_data] = useState();
 const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
 const [UrlImagen, setUrlImagen] = useState(null);
+const [loading, setLoading] = useState(null);
 
   useEffect(() => {
     const URLactual = window.location;
@@ -20,19 +21,20 @@ const [UrlImagen, setUrlImagen] = useState(null);
 
 const handleSubmit = async (e) => {
     e.preventDefault();
-    await API.post('/a', form_data,{
+    setLoading(true);
+  await API.post('/a', form_data,{
               headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
         },
     })
     .then(response => {
       console.log(response)
+      setLoading(false);
       if (response.status === 200){
-        alert('subido');
+        alert('Imagen subida correctamente');
         const UrlImagenOriginal = response.data.secure_url;
         const UrlRecortada = UrlImagenOriginal.replace('https://res.cloudinary.com/dmo3iliks/image/upload/','')
         setUrlImagen(UrlRecortada);
-
       }else{
         alert('error de subida, estatus no es 200');
       }
@@ -105,8 +107,16 @@ if(ImageSelectedPrevious == null & UrlImagen == null){
 
     </div>
   );
-  }
-else{
+  }else if(loading === true) {
+    return(
+      <div className="overlay-content">
+        <div className="wrapper">
+          <Spinner name="line-scale" fadeIn="none" color="white"/>
+          <span className="message">Subiendo imagen...</span>
+        </div>
+      </div>
+    );
+}else{
   return (
   <div>
     <div className="center">
