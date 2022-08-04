@@ -106,7 +106,7 @@ if(ImageSelectedPrevious == null & UrlImagen == null){
       </div>
       <div className="center">
         <button
-          onClick={() => window.location.reload() }
+          onClick={() => document.location.href="/" }
           name='Subir otra imagen' className="botonCopiar"> Subir otra imagen</button>
       </div>
     </div>
