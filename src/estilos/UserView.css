@@ -1,0 +1,22 @@
+.usuario{
+  color: #1b1b32;
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.cerrar-Sesion{
+  margin: 20px;
+  padding: 16px;
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  border: none;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  outline: none;
+  background: #000000;
+  color: #fff;
+  text-transform: capitalize;
+  text-decoration: none;
+}

@@ -49,3 +49,31 @@ h1 {
   margin: 10px;
   border-radius: 26px;
 }
+
+/* MENU NAVEGACION */
+
+.fotos-menu {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1b1b32;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.fotos-menu-principal {
+  width: 80%;
+  background-color: #d0d0d5;
+  padding: 25px;
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1b1b32;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  margin: 20px 0;
+}
