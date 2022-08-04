@@ -1,7 +1,9 @@
+import API from './APIS/api';
 import { useState } from "react";
 import '../estilos/ArrastrarFoto.css';
-import API from './APIS/api';
 import Spinner from "react-spinkit";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 
 function ArrastrarFoto() {
 
@@ -77,6 +79,7 @@ if(ImageSelectedPrevious == null ){
   </div>
   );
 }else if(UrlImagen){
+  const UrlServicio = ('http://localhost:3000/' + UrlImagen);
   return(
     <div>
       <img
@@ -85,6 +88,11 @@ if(ImageSelectedPrevious == null ){
         height="350px"
         width="550px"
       />
+      <input type="text" name="inputname" value={UrlServicio} readOnly className="input"/>
+
+      <CopyToClipboard text={UrlServicio}>
+        <button>Copiar enlace</button>
+      </CopyToClipboard>
     </div>
   );
   }else{

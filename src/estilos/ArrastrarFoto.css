@@ -54,3 +54,7 @@
     text-transform: capitalize;
     text-decoration: none;
   }
+
+.input{
+  width: 400px;
+}
