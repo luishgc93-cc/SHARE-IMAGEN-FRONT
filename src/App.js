@@ -54,15 +54,13 @@ function App() {
 
 if(user){
   return (
-  <div className='aplicacion-fotos'>
-    <div className='fotos-menu'>
-      <div className='fotos-menu-principal'>
-        <UserView user={user} />
-      </div>
-    </div>
-      
+  <div className='aplicacion-fotos'>    
     <div className='fotos-lista-principal'>
       <h1>Compartir fotos mediante enlaces</h1>
+      <div className="center">
+        <UserView user={user} />
+      </div>
+      <hr className="separador"></hr>
         <ArrastrarFoto />
     </div>
   </div>
@@ -70,14 +68,12 @@ if(user){
 }else{
   return (
   <div className='aplicacion-fotos'>
-      <div className='fotos-menu'>
-        <div className='fotos-menu-principal'>
-          <Login />
-        </div>
-      </div>
-
     <div className='fotos-lista-principal'>
       <h1>Compartir fotos mediante enlaces</h1>
+      <div className="center">
+        <Login />
+      </div>
+      <hr className="separador"></hr>
       <ArrastrarFoto />
     </div>
   </div>
