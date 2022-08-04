@@ -5,7 +5,6 @@ import ArrastrarFoto from './componentes/ArrastrarFoto';
 function App() {
   return (
   <div className='aplicacion-fotos'>
-
   <div className='fotos-logo-contenedor'>
   </div>
     <div className='fotos-lista-principal'>
@@ -13,8 +12,6 @@ function App() {
     <ArrastrarFoto />
   </div>
   </div>
-
-
   );
 }
 
