@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 //VISTAS Y COMPONENTES
 import ArrastrarFoto from './componentes/ArrastrarFoto';
-import Login from './vistas/Login';
-import UserView from './vistas/UserView';
+import Login from './componentes/Login';
+import UserView from './componentes/UserView';
 
 //FIREBASE
 import firebaseApp from "./firebase/credenciales";
