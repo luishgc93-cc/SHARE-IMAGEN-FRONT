@@ -1,6 +1,8 @@
 import React from "react";
 import firebaseApp from "../firebase/credenciales";
 import { getAuth, signOut } from "firebase/auth";
+import '../estilos/UserView.css';
+
 const auth = getAuth(firebaseApp);
 
 function UserView(userData) {
@@ -9,8 +11,8 @@ const email = userData.user.email;
 
   return(
     <>
-    <div>Hola, usuario {email}</div>
-    <button onClick={() => signOut(auth)}> Cerrar sesión</button>
+    <div className="usuario">Hola, usuario {email}</div>
+    <button onClick={() => signOut(auth)} className="cerrar-Sesion"> Cerrar sesión</button>
     </>
   );
 }

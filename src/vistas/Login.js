@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../estilos/Login.css';
 
 import firebaseApp from "../firebase/credenciales";
 import {
@@ -48,6 +49,8 @@ function Login() {
   return (
     <div>
       <h1>{isRegistrando ? "Regístrate" : "Inicia sesión"}</h1>
+     
+      <p className="textoLoginRegistro">{isRegistrando ? "Registrate para poder ver todos las imágenes compartidas, poder borrarlas, editarlas, etc." : "Inicia sesión para ver tus imágenes compartidas."}</p>
 
       <form onSubmit={submitHandler}>
         <label>
@@ -66,7 +69,7 @@ function Login() {
         />
       </form>
 
-      <button onClick={() => setIsRegistrando(!isRegistrando)}>
+      <button onClick={() => setIsRegistrando(!isRegistrando)} className="boton">
         {isRegistrando ? "Ya tengo una cuenta" : "Quiero registrarme"}
       </button>
     </div>

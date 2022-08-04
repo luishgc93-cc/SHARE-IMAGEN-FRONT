@@ -55,9 +55,13 @@ function App() {
 if(user){
   return (
     <div className='aplicacion-fotos'>
-       <UserView user={user} />
-    <div className='fotos-logo-contenedor'>
-    </div>
+      
+      <div className='fotos-menu'>
+      <div className='fotos-menu-principal'>
+      <UserView user={user} />
+        </div>
+      </div>
+      
       <div className='fotos-lista-principal'>
       <h1>Compartir fotos mediante enlaces</h1>
       <ArrastrarFoto />
@@ -67,9 +71,13 @@ if(user){
 }else{
   return (
     <div className='aplicacion-fotos'>
-      <Login />
-    <div className='fotos-logo-contenedor'>
-    </div>
+      <div className='fotos-menu'>
+      <div className='fotos-menu-principal'>
+        <Login />
+        </div>
+      </div>
+
+
       <div className='fotos-lista-principal'>
       <h1>Compartir fotos mediante enlaces</h1>
       <ArrastrarFoto />
@@ -78,8 +86,5 @@ if(user){
     );
 }
 
-
-
 }
-
 export default App;
