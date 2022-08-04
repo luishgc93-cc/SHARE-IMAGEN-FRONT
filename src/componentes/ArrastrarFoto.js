@@ -87,7 +87,7 @@ if(ImageSelectedPrevious == null & UrlImagen == null){
   </div>
   );
 }else if(UrlImagen){
-  const UrlServicio = ('?id=' + UrlImagen);
+  const UrlServicio = (window.location + '?id=' + UrlImagen);
   return(
     <div>
       <div className="center">
