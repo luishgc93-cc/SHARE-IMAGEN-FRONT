@@ -4,8 +4,7 @@ import './App.css';
 //VISTAS Y COMPONENTES
 import ArrastrarFoto from './componentes/ArrastrarFoto';
 import Login from './vistas/Login';
-import Registro from './vistas/Registro';
-import Logeado from './vistas/Logeado';
+import UserView from './vistas/UserView';
 
 //FIREBASE
 import firebaseApp from "./firebase/credenciales";
@@ -56,7 +55,7 @@ function App() {
 if(user){
   return (
     <div className='aplicacion-fotos'>
-       <Logeado />
+       <UserView />
     <div className='fotos-logo-contenedor'>
     </div>
       <div className='fotos-lista-principal'>
@@ -68,7 +67,7 @@ if(user){
 }else{
   return (
     <div className='aplicacion-fotos'>
-      <Registro />
+      <Login />
     <div className='fotos-logo-contenedor'>
     </div>
       <div className='fotos-lista-principal'>
