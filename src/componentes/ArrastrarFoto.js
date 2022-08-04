@@ -104,7 +104,11 @@ if(ImageSelectedPrevious == null & UrlImagen == null){
           width="100%"
         />
       </div>
-
+      <div className="center">
+        <button
+          onClick={() => window.location.reload() }
+          name='Subir otra imagen' className="botonCopiar"> Subir otra imagen</button>
+      </div>
     </div>
   );
   }else if(loading === true) {
