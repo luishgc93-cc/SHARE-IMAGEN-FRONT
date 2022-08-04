@@ -47,7 +47,6 @@ const send_image = (files) => {
     const formData = new FormData();
     formData.append('file', files)
     set_form_data(formData)
-    console.log(formData)
 }
 
 const previsualizarImagen = (e) => {
