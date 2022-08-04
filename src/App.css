@@ -41,7 +41,8 @@ h1 {
 }
 
 .fotos-lista-principal {
-  width: 600px;
+  width: 80%;
+  height: 70%;
   min-height: 500px;
   background-color: #d0d0d5;
   padding: 25px;

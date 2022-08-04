@@ -3,6 +3,13 @@
     justify-content: center;
     align-items: center;
   }
+
+.center-imagen {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   .file-upload-content {
     display: none;
     text-align: center;
@@ -57,4 +64,37 @@
 
 .input{
   width: 400px;
+}
+
+.enlace{
+  padding: 16px;
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: #000000;
+  color: #fff;
+  text-decoration: none;
+  width: 60%;
+  border-right: 3px solid #1b1b32;
+}
+
+.botonCopiar{
+  padding: 16px;
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  background: #000000;
+  color: #fff;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+.botonCopiar:hover {
+  background-color: #1b1b32; /* Green */
+  color: white;
 }

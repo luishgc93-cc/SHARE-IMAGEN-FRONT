@@ -88,17 +88,21 @@ if(ImageSelectedPrevious == null & UrlImagen == null){
   const UrlServicio = ('http://localhost:3000?id=' + UrlImagen);
   return(
     <div>
-      <img
-        src={'https://res.cloudinary.com/dmo3iliks/image/upload/' + UrlImagen}
-        alt=""
-        height="350px"
-        width="550px"
-      />
-      <input type="text" name="inputname" value={UrlServicio} readOnly className="input"/>
+      <div className="center">
+        <input type="text" name="inputname" value={UrlServicio} readOnly className="enlace"/>
+        <CopyToClipboard text={UrlServicio}>
+          <button className="botonCopiar">Copiar enlace</button>
+        </CopyToClipboard>
+      </div>
+      <div className="center-imagen">
+        <img
+          src={'https://res.cloudinary.com/dmo3iliks/image/upload/' + UrlImagen}
+          alt=""
+          height="50%"
+          width="100%"
+        />
+      </div>
 
-      <CopyToClipboard text={UrlServicio}>
-        <button>Copiar enlace</button>
-      </CopyToClipboard>
     </div>
   );
   }
