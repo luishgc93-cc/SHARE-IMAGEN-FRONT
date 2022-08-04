@@ -7,6 +7,7 @@ function ArrastrarFoto() {
 
 const [form_data, set_form_data] = useState();
 const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
+const [UrlImagen, setUrlImagen] = useState(null);
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,12 +20,17 @@ const handleSubmit = async (e) => {
       console.log(response)
       if (response.status === 200){
         alert('subido');
+        const UrlImagenOriginal = response.data.secure_url;
+        const UrlRecortada = UrlImagenOriginal.replace('https://res.cloudinary.com/dmo3iliks/image/upload/','')
+        setUrlImagen(UrlRecortada)
+
       }else{
-        alert('error de subida');
+        alert('error de subida, estatus no es 200');
       }
     })
     .catch(error => {
-      alert('error de subida');
+      console.log(error)
+      alert('error de subida cath');
     });
 }
 
@@ -70,7 +76,18 @@ if(ImageSelectedPrevious == null ){
     </form>
   </div>
   );
-}else{
+}else if(UrlImagen){
+  return(
+    <div>
+      <img
+        src={'https://res.cloudinary.com/dmo3iliks/image/upload/' + UrlImagen}
+        alt=""
+        height="350px"
+        width="550px"
+      />
+    </div>
+  );
+  }else{
   return (
   <div>
     <div className="center">
