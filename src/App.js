@@ -11,11 +11,8 @@ import firebaseApp from "./firebase/credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 //
-
-
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
-
 
 function App() {
 
