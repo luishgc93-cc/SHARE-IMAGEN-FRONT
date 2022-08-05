@@ -6,7 +6,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 //FIREBASE
 import firebaseApp from "../firebase/credenciales";
 import { getAuth, signOut, updateProfile,deleteUser } from "firebase/auth";
-import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
+import { getFirestore, doc, collection, setDoc, getDoc } from "firebase/firestore";
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
@@ -22,7 +22,12 @@ const [loading, setLoading] = useState(null);
     const email = userData.user.email;
     const rol = 'user'
     const docuRef = doc(firestore, `usuarios/${currentUser.user.uid}`);
-    setDoc(docuRef, { email: email, rol: rol, links: [link] });
+    const linksAnteriores = userData.user.links
+    if(linksAnteriores){
+      setDoc(docuRef, { email: email, rol: rol, links: [link, ...linksAnteriores] });
+    }else{
+      setDoc(docuRef, { email: email, rol: rol, links: [link] });
+    }
   }
 
   useEffect(() => {
