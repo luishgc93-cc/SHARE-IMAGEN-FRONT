@@ -9,9 +9,12 @@ function Photo({ id, link }){
   console.log(id, link  )
   return(
     <div className="lista-fotos-subidas">
-      <div id={id} className="center">
-        {link}
-      </div>  
+      <img id={id}
+          src={'https://res.cloudinary.com/dmo3iliks/image/upload/' + link}
+          height="50%"
+          width="50%"
+        />
+
     </div>
     );
 }
