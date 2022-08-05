@@ -12,10 +12,9 @@ const firestore = getFirestore(firebaseApp);
   update(userData);
 
   function update(currentUser) {
-    console.log(currentUser)
-
+    const rol = 'user'
     const docuRef = doc(firestore, `usuarios/${currentUser.user.uid}`);
-    setDoc(docuRef, { photoURL: 'zzzz', rol: 'vipss' });
+    setDoc(docuRef, { email: email, rol: rol, links: '1' });
   }
 
   return(
