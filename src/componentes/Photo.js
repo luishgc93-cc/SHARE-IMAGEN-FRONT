@@ -11,8 +11,8 @@ function Photo({ id, link }){
     <div className="lista-fotos-subidas">
       <img id={id}
           src={'https://res.cloudinary.com/dmo3iliks/image/upload/' + link}
-          height="50%"
-          width="50%"
+          height="25%"
+          width="25%"
         />
     </div>
     );
