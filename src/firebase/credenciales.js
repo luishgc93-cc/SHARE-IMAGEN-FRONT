@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 
 // Añade aquí tus credenciales
 const firebaseConfig = {
-  apiKey: "AIzaSyCiOQqyMuzKtsY4ugjsoKahL7tL5WFDyrM",
-  authDomain: "share-imagen-react.firebaseapp.com",
-  projectId: "share-imagen-react",
-  storageBucket: "share-imagen-react.appspot.com",
-  messagingSenderId: "351641624855",
-  appId: "1:351641624855:web:e4d4c1695fb701a50a9752"
+  apiKey: "AIzaSyCjCvLXZiB_l5JmnCb0Rq6ZV9Jq5qDD-4A",
+  authDomain: "share-imagen-usuarios-links.firebaseapp.com",
+  projectId: "share-imagen-usuarios-links",
+  storageBucket: "share-imagen-usuarios-links.appspot.com",
+  messagingSenderId: "537540383482",
+  appId: "1:537540383482:web:f88b24cb6a947129822f43"
 };
 
 // Inicializamos la aplicación y la guardamos en firebaseApp
