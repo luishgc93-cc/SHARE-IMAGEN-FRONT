@@ -14,7 +14,6 @@ function Photo({ id, link }){
           height="50%"
           width="50%"
         />
-
     </div>
     );
 }
