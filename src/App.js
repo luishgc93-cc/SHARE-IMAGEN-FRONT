@@ -53,9 +53,7 @@ if(user){
   <div className='aplicacion-fotos'>    
     <div className='fotos-lista-principal'>
       <h1>Compartir fotos mediante enlaces</h1>
-      <div className="center">
         <UserView user={user} />
-      </div>
       <hr className="separador"></hr>
         <ArrastrarFoto user={user} />
     </div>

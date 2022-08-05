@@ -16,31 +16,37 @@ function UserView(userData) {
   if(verFotosSubidas === true){
     return(
       <>
-      <div className="usuario">Hola, usuario {email}</div>
-      <div>
+  <div className="center">
+    <div>Hola, usuario {email}
+    </div>
+    <div>
       <button onClick={() => setVerFotosSubidas(false)} className="cerrar-Sesion">Cerrar fotos compartidas</button>
       <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
-      </div>
+    </div>
+    </div>
       <div>
-      {
-        links.map((link,key) =>
-        <Photo 
-        id={key}
-        link={link}
-        />
-        )
-     }
+        {
+          links.map((link,key) =>
+          <Photo 
+          id={key}
+          link={link}
+          />
+          )
+        }
       </div>
       </>
     );
   }else{
     return(
       <>
+  <div className="center">
       <div className="usuario">Hola, usuario {email}</div>
       <div>
       <button onClick={() => setVerFotosSubidas(true)} className="cerrar-Sesion">Ver fotos compartidas</button>
       <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
       </div>
+  </div>
+
       </>
     );
   }

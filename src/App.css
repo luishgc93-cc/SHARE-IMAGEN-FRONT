@@ -91,3 +91,10 @@ h1 {
   border: 1px solid black;
 
 }
+
+.lista-fotos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}

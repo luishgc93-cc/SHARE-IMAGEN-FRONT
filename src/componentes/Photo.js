@@ -8,7 +8,7 @@ const auth = getAuth(firebaseApp);
 function Photo({ id, link }){
   console.log(id, link  )
   return(
-    <div className="lista-fotos-subidas">
+    <div className="lista-fotos">
       <img id={id}
           src={'https://res.cloudinary.com/dmo3iliks/image/upload/' + link}
           height="25%"
