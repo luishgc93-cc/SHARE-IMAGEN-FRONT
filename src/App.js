@@ -41,8 +41,6 @@ function App() {
 
   onAuthStateChanged(auth, (usuarioFirebase) => {
     if (usuarioFirebase) {
-      //funcion final
-
       if (!user) {
         setUserWithFirebaseAndRol(usuarioFirebase);
       }
