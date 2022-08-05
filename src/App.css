@@ -48,6 +48,10 @@ h1 {
   border-radius: 26px;
 }
 
+.lista-fotos-subidas {
+  padding: 25px;
+  margin: 10px;
+}
 /* MENU NAVEGACION */
 
 .fotos-menu {
