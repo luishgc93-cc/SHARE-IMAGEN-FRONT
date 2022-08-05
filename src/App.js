@@ -18,19 +18,21 @@ function App() {
 
   const [user, setUser] = useState(null);
 
-  async function getRol(uid) {
+  async function getRolandLinks(uid) {
     const docuRef = doc(firestore, `usuarios/${uid}`);
     const docuCifrada = await getDoc(docuRef);
-    const infoFinal = docuCifrada.data().rol;
+    const infoFinal = docuCifrada.data();
     return infoFinal;
   }
 
   function setUserWithFirebaseAndRol(usuarioFirebase) {
-    getRol(usuarioFirebase.uid).then((rol) => {
+    getRolandLinks(usuarioFirebase.uid)
+    .then((data) => {
       const userData = {
         uid: usuarioFirebase.uid,
         email: usuarioFirebase.email,
-        rol: rol,
+        rol: data.rol,
+        links: data.links,
       };
       setUser(userData);
     });
