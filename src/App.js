@@ -36,7 +36,6 @@ function App() {
         rol: rol,
       };
       setUser(userData);
-      console.log("userData", userData);
     });
   }
 

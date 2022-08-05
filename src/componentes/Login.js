@@ -22,8 +22,6 @@ function Login() {
     ).then((usuarioFirebase) => {
       return usuarioFirebase;
     });
-
-    console.log(infoUsuario.user.uid);
     const docuRef = doc(firestore, `usuarios/${infoUsuario.user.uid}`);
     setDoc(docuRef, { correo: email, rol: rol });
   }
@@ -34,14 +32,9 @@ function Login() {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
     const rol = "user";
-
-    console.log("submit", email, password, rol);
-
     if (isRegistrando) {
-      // registrar
       registrarUsuario(email, password, rol);
     } else {
-      // login
       signInWithEmailAndPassword(auth, email, password);
     }
   }
