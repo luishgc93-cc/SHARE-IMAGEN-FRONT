@@ -3,14 +3,27 @@ import { useState,useEffect } from "react";
 import '../estilos/ArrastrarFoto.css';
 import Spinner from "react-spinkit";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+//FIREBASE
+import firebaseApp from "../firebase/credenciales";
+import { getAuth, signOut, updateProfile,deleteUser } from "firebase/auth";
+import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
+const auth = getAuth(firebaseApp);
+const firestore = getFirestore(firebaseApp);
 
 
-function ArrastrarFoto() {
-
+function ArrastrarFoto(userData) {
 const [form_data, set_form_data] = useState();
 const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
 const [UrlImagen, setUrlImagen] = useState(null);
 const [loading, setLoading] = useState(null);
+
+
+  function update(currentUser,link) {
+    const email = userData.user.email;
+    const rol = 'user'
+    const docuRef = doc(firestore, `usuarios/${currentUser.user.uid}`);
+    setDoc(docuRef, { email: email, rol: rol, links: [link] });
+  }
 
   useEffect(() => {
     const URLactual = window.location;
@@ -35,6 +48,10 @@ const handleSubmit = async (e) => {
         const UrlImagenOriginal = response.data.secure_url;
         const UrlRecortada = UrlImagenOriginal.replace('https://res.cloudinary.com/dmo3iliks/image/upload/','')
         setUrlImagen(UrlRecortada);
+        console.log(userData)
+        console.log('FOTO SUBIDA Y LLEGA LOS DATOS DE USUARIO :' + userData)
+        update(userData,UrlRecortada);
+
       }else{
         alert('error de subida, estatus no es 200');
       }

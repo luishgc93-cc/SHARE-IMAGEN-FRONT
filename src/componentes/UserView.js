@@ -8,14 +8,6 @@ const auth = getAuth(firebaseApp);
 function UserView(userData) {
 const email = userData.user.email;
 const firestore = getFirestore(firebaseApp);
-  console.log(userData)
-  update(userData);
-  function update(currentUser) {
-    const rol = 'user'
-    const docuRef = doc(firestore, `usuarios/${currentUser.user.uid}`);
-    setDoc(docuRef, { email: email, rol: rol, links: ['13'] });
-  }
-
   return(
     <>
     <div className="usuario">Hola, usuario {email}</div>

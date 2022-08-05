@@ -57,7 +57,7 @@ if(user){
         <UserView user={user} />
       </div>
       <hr className="separador"></hr>
-        <ArrastrarFoto />
+        <ArrastrarFoto user={user} />
     </div>
   </div>
     );
