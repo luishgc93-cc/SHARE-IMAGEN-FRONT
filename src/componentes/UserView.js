@@ -30,6 +30,7 @@ function UserView(userData) {
           <Photo 
           id={key}
           link={link}
+          key={key}
           />
           )
         }
