@@ -14,7 +14,6 @@ function Photo({ id, link }){
   var linkConBarra = e.substring(recortar,hasta)
   const link = linkConBarra.replace('/', '');
 
-  
   API.post('/bye', {
     photo: link, 
   })
