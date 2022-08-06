@@ -1,3 +1,4 @@
+import API from './APIS/api';
 import React from "react";
 import firebaseApp from "../firebase/credenciales";
 import { getAuth, signOut, updateProfile,deleteUser } from "firebase/auth";
@@ -7,6 +8,29 @@ const auth = getAuth(firebaseApp);
 
 function Photo({ id, link }){
 
+  const borrarFoto = (e) => {
+  var recortar = e.indexOf('/')
+  var hasta = e.indexOf('.')
+  var linkConBarra = e.substring(recortar,hasta)
+  const link = linkConBarra.replace('/', '');
+
+  
+  API.post('/bye', {
+    photo: link, 
+  })
+    .then(response => {
+      console.log(response)
+      if (response.status === 200){
+        alert('Imagen borrada correctamente');
+      }else{
+        alert('error de borrado, estatus no es 200');
+      }
+    })
+    .catch(error => {
+      console.log(error)
+      alert('error de borrado cath');
+    });
+}
 
   return(
     <div className="lista-fotos">
@@ -18,7 +42,7 @@ function Photo({ id, link }){
         <a href={ '?id=' + link } >
         <button className="cerrar-Sesion">Ver enlace</button>
         </a>
-      <button className="cerrar-Sesion">Borrar foto</button>
+        <button className='cerrar-Sesion' onClick={()=>borrarFoto(link)}>Borrar Foto</button>
     </div>
     );
 }
