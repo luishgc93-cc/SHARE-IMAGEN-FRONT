@@ -7,6 +7,7 @@ const auth = getAuth(firebaseApp);
 
 function Photo({ id, link, borrarFoto }){
   const LinkPhoto = link.photo;
+  console.log(LinkPhoto)
   return(
     <div className="lista-fotos">
       <img id={id}
@@ -14,7 +15,7 @@ function Photo({ id, link, borrarFoto }){
           height="25%"
           width="25%"
         />
-        <a href={ '?id=' + link } >
+        <a href={ '?id=' + LinkPhoto } >
         <button className="cerrar-Sesion">Ver enlace</button>
         </a>
         <button className='cerrar-Sesion' onClick={()=>borrarFoto(link)}>Borrar Foto</button>
