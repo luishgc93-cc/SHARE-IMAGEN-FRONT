@@ -13,7 +13,7 @@ function UserView(userData) {
   const firestore = getFirestore(firebaseApp);
   const links = userData.user.links;
   console.log(links)
-  if(verFotosSubidas === true){
+  if(verFotosSubidas === true && links !== null){
     return(
       <>
   <div className="center">
@@ -42,7 +42,7 @@ function UserView(userData) {
   <div className="center">
       <div className="usuario">Hola, usuario {email}</div>
       <div>
-      <button onClick={() => setVerFotosSubidas(true)} className="cerrar-Sesion">Ver fotos compartidas</button>
+      <button onClick={() => links ? setVerFotosSubidas(true) : alert('No hay fotos subidas en esta cuenta de usuario.')} className="cerrar-Sesion">Ver fotos compartidas</button>
       <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
       </div>
   </div>
