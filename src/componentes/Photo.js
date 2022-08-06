@@ -20,8 +20,11 @@ function Photo({ id, link }){
   })
     .then(response => {
       console.log(response)
-      if (response.status === 200){
+      if (response.status === 200 && response.data.result === 'ok'){
+        console.log(response.data)
         alert('Imagen borrada correctamente');
+      }else if(response.status === 200 && response.data.result === 'not found'){
+        alert('Imagen no encontrada');
       }else{
         alert('error de borrado, estatus no es 200');
       }
