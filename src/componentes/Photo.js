@@ -7,7 +7,6 @@ const auth = getAuth(firebaseApp);
 
 function Photo({ id, link, borrarFoto }){
   const LinkPhoto = link.photo;
-  console.log(LinkPhoto)
   return(
     <div className="lista-fotos">
       <img id={id}
