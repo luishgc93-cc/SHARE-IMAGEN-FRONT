@@ -6,14 +6,19 @@ import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
 const auth = getAuth(firebaseApp);
 
 function Photo({ id, link }){
-  console.log(id, link  )
+
+
   return(
     <div className="lista-fotos">
       <img id={id}
-          src={'https://res.cloudinary.com/dmo3iliks/image/upload/' + link}
+          src={ 'https://res.cloudinary.com/dmo3iliks/image/upload/' + link }
           height="25%"
           width="25%"
         />
+        <a href={ '?id=' + link } >
+        <button className="cerrar-Sesion">Ver enlace</button>
+        </a>
+      <button className="cerrar-Sesion">Borrar foto</button>
     </div>
     );
 }
