@@ -12,7 +12,6 @@ function UserView(userData) {
   const email = userData.user.email;
   const firestore = getFirestore(firebaseApp);
   const links = userData.user.links;
-  console.log(links)
   if(verFotosSubidas === true && links !== null){
     return(
       <>
