@@ -58,7 +58,7 @@ function UserView(userData) {
     setDoc(docuRef, { email: email, rol: rol, links: nuevosEnlaces });
   }
 
-  if(verFotosSubidas === true && links !== null){
+  if(verFotosSubidas === true && links !== null && parseInt(links.length) > 0){
     return(
       <>
   <div className="center">
