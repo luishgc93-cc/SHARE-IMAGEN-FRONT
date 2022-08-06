@@ -55,11 +55,7 @@ function UserView(userData) {
     const rol = 'user'
     const docuRef = doc(firestore, `usuarios/${currentUser.uid}`);
     const linksAnteriores = currentUser.links
-    if(linksAnteriores){
-      setDoc(docuRef, { email: email, rol: rol, links: [nuevosEnlaces, ...linksAnteriores] });
-    }else{
-      setDoc(docuRef, { email: email, rol: rol, links: [nuevosEnlaces] });
-    }
+    setDoc(docuRef, { email: email, rol: rol, links: nuevosEnlaces });
   }
 
   if(verFotosSubidas === true && links !== null){

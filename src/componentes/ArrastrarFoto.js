@@ -23,6 +23,7 @@ const [loading, setLoading] = useState(null);
     const rol = 'user'
     const docuRef = doc(firestore, `usuarios/${currentUser.user.uid}`);
     const linksAnteriores = userData.user.links
+    console.log(linksAnteriores)
     if(linksAnteriores){
       setDoc(docuRef, { email: email, rol: rol, links: [link, ...linksAnteriores] });
     }else{
@@ -54,7 +55,6 @@ const handleSubmit = async (e) => {
         const UrlRecortada = UrlImagenOriginal.replace('https://res.cloudinary.com/dmo3iliks/image/upload/','')
         setUrlImagen(UrlRecortada);
         console.log(userData)
-        console.log('FOTO SUBIDA Y LLEGA LOS DATOS DE USUARIO :' + userData)
         const ConstLink = {
           photo: UrlRecortada,
       }
