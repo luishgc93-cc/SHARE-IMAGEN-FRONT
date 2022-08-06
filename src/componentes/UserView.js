@@ -3,23 +3,31 @@ import { useState,useEffect } from "react";
 import firebaseApp from "../firebase/credenciales";
 import { getAuth, signOut, updateProfile,deleteUser } from "firebase/auth";
 import '../estilos/UserView.css';
-import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
+import { getFirestore, doc, collection, setDoc, getDoc } from "firebase/firestore";
+
 import Photo from "./Photo";
 
 const auth = getAuth(firebaseApp);
 
 function UserView(userData) {
   const [verFotosSubidas, setVerFotosSubidas] = useState(null);
+  const[links, setLinks] = useState([]);
   const email = userData.user.email;
   const firestore = getFirestore(firebaseApp);
-  const links = userData.user.links;
-
-  const borrarFoto = (e) => {
-    var recortar = e.indexOf('/')
-    var hasta = e.indexOf('.')
-    var linkConBarra = e.substring(recortar,hasta)
-    const link = linkConBarra.replace('/', '');
+  useEffect(() => {
+    setLinks(userData.user.links);
+  }, [])
   
+  const borrarFoto = (e) => {
+    var recortar = e.photo.indexOf('/')
+    var hasta = e.photo.indexOf('.')
+    var linkConBarra = e.photo.substring(recortar,hasta)
+    const link = linkConBarra.replace('/', '');
+
+    var nuevosEnlaces = links.filter((item) => item.photo !== e.photo);
+    setLinks(nuevosEnlaces);
+    update(nuevosEnlaces);
+
     API.post('/bye', {
       photo: link, 
     })
@@ -40,6 +48,19 @@ function UserView(userData) {
       });
   }
 
+  function update(nuevosEnlaces){
+    console.log(nuevosEnlaces)
+    const currentUser = userData.user;
+    const email = currentUser.email;
+    const rol = 'user'
+    const docuRef = doc(firestore, `usuarios/${currentUser.uid}`);
+    const linksAnteriores = currentUser.links
+    if(linksAnteriores){
+      setDoc(docuRef, { email: email, rol: rol, links: [nuevosEnlaces, ...linksAnteriores] });
+    }else{
+      setDoc(docuRef, { email: email, rol: rol, links: [nuevosEnlaces] });
+    }
+  }
 
   if(verFotosSubidas === true && links !== null){
     return(

@@ -55,7 +55,10 @@ const handleSubmit = async (e) => {
         setUrlImagen(UrlRecortada);
         console.log(userData)
         console.log('FOTO SUBIDA Y LLEGA LOS DATOS DE USUARIO :' + userData)
-        update(userData,UrlRecortada);
+        const ConstLink = {
+          photo: UrlRecortada,
+      }
+        update(userData,ConstLink);
 
       }else{
         alert('error de subida, estatus no es 200');

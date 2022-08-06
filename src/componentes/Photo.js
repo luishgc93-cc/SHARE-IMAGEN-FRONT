@@ -6,10 +6,11 @@ import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
 const auth = getAuth(firebaseApp);
 
 function Photo({ id, link, borrarFoto }){
+  const LinkPhoto = link.photo;
   return(
     <div className="lista-fotos">
       <img id={id}
-          src={ 'https://res.cloudinary.com/dmo3iliks/image/upload/' + link }
+          src={ 'https://res.cloudinary.com/dmo3iliks/image/upload/' + LinkPhoto }
           height="25%"
           width="25%"
         />
