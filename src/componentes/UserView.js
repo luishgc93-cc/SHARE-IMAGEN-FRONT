@@ -14,7 +14,6 @@ function UserView(userData) {
   const firestore = getFirestore(firebaseApp);
   const links = userData.user.links;
 
-
   const borrarFoto = (e) => {
     var recortar = e.indexOf('/')
     var hasta = e.indexOf('.')
