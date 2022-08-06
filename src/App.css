@@ -98,3 +98,7 @@ h1 {
   align-items: center;
   margin: 20px;
 }
+
+.clear{
+  clear:both;
+}

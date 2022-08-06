@@ -32,10 +32,9 @@ function UserView(userData) {
       photo: link, 
     })
       .then(response => {
-        console.log(response)
+        
         if (response.status === 200 && response.data.result === 'ok'){
-          console.log(response.data)
-          alert('Imagen borrada correctamente');
+
         }else if(response.status === 200 && response.data.result === 'not found'){
           alert('Imagen no encontrada');
         }else{
@@ -49,7 +48,6 @@ function UserView(userData) {
   }
 
   function update(nuevosEnlaces){
-    console.log(nuevosEnlaces)
     const currentUser = userData.user;
     const email = currentUser.email;
     const rol = 'user'
@@ -61,15 +59,16 @@ function UserView(userData) {
   if(verFotosSubidas === true && links !== null && parseInt(links.length) > 0){
     return(
       <>
-  <div className="center">
-    <div>Hola, usuario {email}
+    <div className="center">
+      <div className="usuario">Hola, usuario {email}</div>
     </div>
-    <div>
+
+    <div className="center">
       <button onClick={() => setVerFotosSubidas(false)} className="cerrar-Sesion">Cerrar fotos compartidas</button>
       <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
     </div>
-    </div>
-      <div>
+
+    <div> 
         {
           links.map((link,key) =>
           <Photo 
@@ -87,11 +86,12 @@ function UserView(userData) {
     return(
       <>
   <div className="center">
-      <div className="usuario">Hola, usuario {email}</div>
-      <div>
-      <button onClick={() => links ? setVerFotosSubidas(true) : alert('No hay fotos subidas en esta cuenta de usuario.')} className="cerrar-Sesion">Ver fotos compartidas</button>
-      <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
-      </div>
+    <div className="usuario">Hola, usuario {email}</div>
+  </div>
+
+  <div className="center">
+    <button onClick={() => links ? setVerFotosSubidas(true) : alert('No hay fotos subidas en esta cuenta de usuario.')} className="cerrar-Sesion">Ver fotos compartidas</button>
+    <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
   </div>
 
       </>
