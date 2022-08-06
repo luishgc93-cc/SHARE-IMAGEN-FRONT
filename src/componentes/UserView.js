@@ -1,3 +1,4 @@
+import API from './APIS/api';
 import { useState,useEffect } from "react";
 import firebaseApp from "../firebase/credenciales";
 import { getAuth, signOut, updateProfile,deleteUser } from "firebase/auth";
@@ -12,6 +13,35 @@ function UserView(userData) {
   const email = userData.user.email;
   const firestore = getFirestore(firebaseApp);
   const links = userData.user.links;
+
+
+  const borrarFoto = (e) => {
+    var recortar = e.indexOf('/')
+    var hasta = e.indexOf('.')
+    var linkConBarra = e.substring(recortar,hasta)
+    const link = linkConBarra.replace('/', '');
+  
+    API.post('/bye', {
+      photo: link, 
+    })
+      .then(response => {
+        console.log(response)
+        if (response.status === 200 && response.data.result === 'ok'){
+          console.log(response.data)
+          alert('Imagen borrada correctamente');
+        }else if(response.status === 200 && response.data.result === 'not found'){
+          alert('Imagen no encontrada');
+        }else{
+          alert('error de borrado, estatus no es 200');
+        }
+      })
+      .catch(error => {
+        console.log(error)
+        alert('error de borrado cath');
+      });
+  }
+
+
   if(verFotosSubidas === true && links !== null){
     return(
       <>
@@ -30,6 +60,7 @@ function UserView(userData) {
           id={key}
           link={link}
           key={key}
+          borrarFoto={borrarFoto}
           />
           )
         }
