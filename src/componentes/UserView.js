@@ -1,19 +1,16 @@
 import API from './APIS/api';
 import { useState,useEffect } from "react";
-import firebaseApp from "../firebase/credenciales";
-import { getAuth, signOut, updateProfile,deleteUser } from "firebase/auth";
+import { deletePhotoUser } from '../firebase/fireActions';
 import '../estilos/UserView.css';
-import { getFirestore, doc, collection, setDoc, getDoc } from "firebase/firestore";
-
 import Photo from "./Photo";
-
+import { getAuth, signOut} from "firebase/auth";
+import firebaseApp from "../firebase/credenciales";
 const auth = getAuth(firebaseApp);
 
 function UserView(userData) {
   const [verFotosSubidas, setVerFotosSubidas] = useState(null);
   const[links, setLinks] = useState([]);
   const email = userData.user.email;
-  const firestore = getFirestore(firebaseApp);
   
   useEffect(() => {
     setLinks(userData.user.links);
@@ -27,7 +24,7 @@ function UserView(userData) {
 
     var nuevosEnlaces = links.filter((item) => item.photo !== e.photo);
     setLinks(nuevosEnlaces);
-    update(nuevosEnlaces);
+    deletePhotoUser(userData,nuevosEnlaces);
 
     API.post('/bye', {
       photo: link, 
@@ -46,15 +43,6 @@ function UserView(userData) {
         console.log(error)
         alert('error de borrado cath');
       });
-  }
-
-  function update(nuevosEnlaces){
-    const currentUser = userData.user;
-    const email = currentUser.email;
-    const rol = 'user'
-    const docuRef = doc(firestore, `usuarios/${currentUser.uid}`);
-    const linksAnteriores = currentUser.links
-    setDoc(docuRef, { email: email, rol: rol, links: nuevosEnlaces });
   }
 
   if(verFotosSubidas === true && links !== null && links.length > 0){
@@ -93,6 +81,7 @@ function UserView(userData) {
   <div className="center">
     <button onClick={() => links.length > 0 ? setVerFotosSubidas(true) : alert('No hay fotos subidas en esta cuenta de usuario.')} className="cerrar-Sesion">Ver fotos compartidas</button>
     <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
+
   </div>
 
       </>

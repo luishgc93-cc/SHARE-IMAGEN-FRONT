@@ -4,32 +4,13 @@ import '../estilos/ArrastrarFoto.css';
 import Spinner from "react-spinkit";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 //FIREBASE
-import firebaseApp from "../firebase/credenciales";
-import { getAuth, signOut, updateProfile,deleteUser } from "firebase/auth";
-import { getFirestore, doc, collection, setDoc, getDoc } from "firebase/firestore";
-const auth = getAuth(firebaseApp);
-const firestore = getFirestore(firebaseApp);
-
+import { updateUser } from '../firebase/fireActions';
 
 function ArrastrarFoto(userData) {
 const [form_data, set_form_data] = useState();
 const [ImageSelectedPrevious, setImageSelectedPrevious] = useState(null);
 const [UrlImagen, setUrlImagen] = useState(null);
 const [loading, setLoading] = useState(null);
-
-
-  function update(currentUser,link) {
-    const email = userData.user.email;
-    const rol = 'user'
-    const docuRef = doc(firestore, `usuarios/${currentUser.user.uid}`);
-    const linksAnteriores = userData.user.links
-    console.log(linksAnteriores)
-    if(linksAnteriores){
-      setDoc(docuRef, { email: email, rol: rol, links: [link, ...linksAnteriores] });
-    }else{
-      setDoc(docuRef, { email: email, rol: rol, links: [link] });
-    }
-  }
 
   useEffect(() => {
     const URLactual = window.location;
@@ -57,7 +38,7 @@ const handleSubmit = async (e) => {
         const ConstLink = {
           photo: UrlRecortada,
       }
-        update(userData,ConstLink);
+      updateUser(userData,ConstLink);
 
       }else{
         alert('error de subida, estatus no es 200');
