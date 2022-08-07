@@ -23,7 +23,7 @@ function Login() {
       return usuarioFirebase;
     });
     const docuRef = doc(firestore, `usuarios/${infoUsuario.user.uid}`);
-    setDoc(docuRef, { correo: email, rol: rol });
+    setDoc(docuRef, { correo: email, rol: rol, links: [] });
   }
 
   function submitHandler(e) {
