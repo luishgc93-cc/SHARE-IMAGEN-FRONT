@@ -14,10 +14,11 @@ function UserView(userData) {
   const[links, setLinks] = useState([]);
   const email = userData.user.email;
   const firestore = getFirestore(firebaseApp);
+  
   useEffect(() => {
     setLinks(userData.user.links);
   }, [])
-  
+
   const borrarFoto = (e) => {
     var recortar = e.photo.indexOf('/')
     var hasta = e.photo.indexOf('.')
@@ -56,7 +57,7 @@ function UserView(userData) {
     setDoc(docuRef, { email: email, rol: rol, links: nuevosEnlaces });
   }
 
-  if(verFotosSubidas === true && links !== null && parseInt(links.length) > 0){
+  if(verFotosSubidas === true && links !== null && links.length > 0){
     return(
       <>
     <div className="center">
@@ -90,7 +91,7 @@ function UserView(userData) {
   </div>
 
   <div className="center">
-    <button onClick={() => links ? setVerFotosSubidas(true) : alert('No hay fotos subidas en esta cuenta de usuario.')} className="cerrar-Sesion">Ver fotos compartidas</button>
+    <button onClick={() => links.length > 0 ? setVerFotosSubidas(true) : alert('No hay fotos subidas en esta cuenta de usuario.')} className="cerrar-Sesion">Ver fotos compartidas</button>
     <button onClick={() => signOut(auth)} className="cerrar-Sesion">Cerrar sesión</button>
   </div>
 
