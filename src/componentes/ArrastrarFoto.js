@@ -50,7 +50,6 @@ const handleSubmit = async (e) => {
       console.log(response)
       setLoading(false);
       if (response.status === 200){
-        alert('Imagen subida correctamente');
         const UrlImagenOriginal = response.data.secure_url;
         const UrlRecortada = UrlImagenOriginal.replace('https://res.cloudinary.com/dmo3iliks/image/upload/','')
         setUrlImagen(UrlRecortada);
